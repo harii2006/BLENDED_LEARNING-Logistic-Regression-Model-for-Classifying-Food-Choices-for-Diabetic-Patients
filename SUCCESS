@@ -30,8 +30,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 df = pd.read_csv('food_items (1).csv')
-print("Name: LOKESHWARAN G")
-print("Reg. No: 212225040210")
+print("Name: SHRIHARI M")
+print("Reg. No: 25013276")
 print("Dataset Overview:")
 print(df.head())
 print("\nDataset Info:")
