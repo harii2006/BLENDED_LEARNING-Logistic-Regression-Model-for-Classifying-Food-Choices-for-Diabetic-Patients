@@ -37,50 +37,74 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('food_items (1).csv')
-print("Name: SHRIHARI M")
-print("Reg. No: 212225230265")
+#Load the dataset
+df=pd.read_csv('food_items (1).csv')
+#inspect the dataset
+print('Name: SHRIHARI M ')
+print('Reg. No:212225230265  ')
 print("Dataset Overview:")
 print(df.head())
 print("\nDataset Info:")
 print(df.info())
-X_raw = df.iloc[:, :-1]
-y_raw = df.iloc[:, -1]
-scaler = MinMaxScaler()
-X = scaler.fit_transform(X_raw)
+X_raw = df.iloc[:,:-1]
+y_raw = df.iloc[:,-1:]
+scaler= MinMaxScaler()
+#Scaling the raw input features
+X= scaler.fit_transform(X_raw)
+#Create a LabelEncoder object
 label_encoder = LabelEncoder()
-y = label_encoder.fit_transform(y_raw)
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, stratify=y, random_state=123
-)
+#Encode the target variable
+y= label_encoder.fit_transform(y_raw.values.ravel())
+#Note the ravel() function flattens the vector
+
+
+#First, let's split the the training and testing dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify =y, random_state=123)
+
+#L2 penalty to shrink coefficients without removing any features from the model
+penalty='l2'
+
+#Our classification problem is multinomial
+multi_class='multinomial'
+
+#Use of lbfgs for L2 penalty and multinomial classes
+solver= 'lbfgs'
+
+#Max iteration=1000
+max_iter=1000
+
+#Define a logistic regression model with the  above arguments
 l2_model = LogisticRegression(
     random_state=123,
-    penalty='l2',           
-    multi_class='multinomial',
-    solver='lbfgs',
-    max_iter=1000
+    penalty=penalty,
+    multi_class=multi_class, 
+    solver=solver, 
+    max_iter=max_iter
 )
-
 l2_model.fit(X_train, y_train)
 
-y_pred = l2_model.predict(X_test)
+y_pred= l2_model.predict(X_test)
+print('Name:SHRIHARI')
+print('Reg. No:25013276')
 print("\nModel Evaluation:")
-print("Accuracy:", accuracy_score(y_test, y_pred))
+print("Accuracy:",accuracy_score(y_test, y_pred))
 print("\nClassification Report:")
 print(classification_report(y_test, y_pred))
-conf_matrix = confusion_matrix(y_test, y_pred)
-print("\nConfusion Matrix:")
+
+#Confusion Matrix
+conf_matrix= confusion_matrix(y_test, y_pred)
 print(conf_matrix)
-plt.figure()
-sns.heatmap(conf_matrix, annot=True, fmt='d')
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.title("Confusion Matrix")
-plt.show()
+
+print('Name:SHRIHARI M')
+print('Reg. No:212225230265 ')
 ```
 Output:
-<img width="830" height="602" alt="image" src="https://github.com/user-attachments/assets/18658b91-1351-47b9-945d-eb05e7010522" />
+<img width="644" height="529" alt="Screenshot 2026-03-25 145433" src="https://github.com/user-attachments/assets/b14becbb-74d8-4ea6-b64d-06665b61c043" />
 
+
+<img width="629" height="743" alt="Screenshot 2026-03-25 145441" src="https://github.com/user-attachments/assets/5e77c9b3-4f5c-405f-8fd8-289f75806bc0" />
+
+<img width="553" height="103" alt="Screenshot 2026-03-25 145446" src="https://github.com/user-attachments/assets/ac38b86b-404f-46b7-8058-db0077d560ce" />
 
 Result:
 
