@@ -1,16 +1,16 @@
-BLENDED_LEARNING
+# BLENDED_LEARNING
 
 Implementation of Logistic Regression Model for Classifying Food Choices for Diabetic Patients
 
-AIM:
+## AIM
 To implement a logistic regression model to classify food items for diabetic patients based on nutrition information.
 
-Equipments Required: 
+## Equipments Required:
 
 Hardware – PCs
 Anaconda – Python 3.7 Installation / Jupyter notebook
 
-Algorithm
+## Algorithm
 
 1.Load the dataset, separate features and target, scale the features using MinMaxScaler, and encode the target labels using LabelEncoder.
 
@@ -20,7 +20,7 @@ Algorithm
 
 4.Evaluate the model using accuracy, precision, recall, F1-score, and confusion matrix, then visualize the confusion matrix using a heatmap.
 
-Program:
+## Program:
 ```
 /*
 Program to implement Logistic Regression for classifying food choices based on nutritional information.
@@ -98,7 +98,7 @@ print(conf_matrix)
 print('Name:SHRIHARI M')
 print('Reg. No:212225230265 ')
 ```
-Output:
+## Output:
 <img width="644" height="529" alt="Screenshot 2026-03-25 145433" src="https://github.com/user-attachments/assets/b14becbb-74d8-4ea6-b64d-06665b61c043" />
 
 
@@ -106,6 +106,6 @@ Output:
 
 <img width="553" height="103" alt="Screenshot 2026-03-25 145446" src="https://github.com/user-attachments/assets/ac38b86b-404f-46b7-8058-db0077d560ce" />
 
-Result:
+## Result:
 
 Thus, the logistic regression model was successfully implemented to classify food items for diabetic patients based on nutritional information, and the model's performance was evaluated using various performance metrics such as accuracy, precision, and recall.
